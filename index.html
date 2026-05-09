@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trip Expense Split</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Shivang Trip</p>
+        <h1>Expense Split</h1>
+      </div>
+      <button id="logoutBtn" class="icon-text hidden" type="button">Logout</button>
+    </header>
+
+    <section id="loginView" class="view">
+      <div class="hero">
+        <p>Who is logging in?</p>
+        <div id="personButtons" class="person-grid"></div>
+      </div>
+    </section>
+
+    <section id="appView" class="view hidden">
+      <div class="session-card">
+        <div>
+          <p class="eyebrow">Logged in as</p>
+          <h2 id="activeUserName">-</h2>
+        </div>
+        <button id="addExpenseBtn" class="primary-btn" type="button">+ Add</button>
+      </div>
+
+      <section class="summary-strip">
+        <article>
+          <span>Total</span>
+          <strong id="tripTotal">Rs 0</strong>
+        </article>
+        <article>
+          <span>Transactions</span>
+          <strong id="entryCount">0</strong>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>People and totals</h2>
+          <span>Tap a person to see details</span>
+        </div>
+        <div id="peopleSummary" class="people-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>Final settlement</h2>
+          <span>Split only among selected people</span>
+        </div>
+        <div id="settlementList" class="settlement-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="passwordDialog" class="modal">
+    <form id="passwordForm" class="modal-card">
+      <button class="close-btn" type="button" data-close-password>&times;</button>
+      <p class="eyebrow">PIN required</p>
+      <h2 id="passwordTitle">Login</h2>
+      <input id="passwordInput" type="password" inputmode="numeric" maxlength="4" placeholder="Password" autocomplete="off" required>
+      <p id="passwordError" class="error-text"></p>
+      <button class="primary-btn full" type="submit">Login</button>
+    </form>
+  </dialog>
+
+  <dialog id="expenseDialog" class="modal">
+    <form id="expenseForm" class="modal-card">
+      <button class="close-btn" type="button" data-close-expense>&times;</button>
+      <p class="eyebrow" id="expenseModeLabel">New transaction</p>
+      <h2 id="expenseTitle">Add expense</h2>
+
+      <label>
+        Amount
+        <input id="amountInput" type="number" min="1" step="0.01" placeholder="0" required>
+      </label>
+
+      <label>
+        What was this expense for?
+        <input id="reasonInput" type="text" maxlength="80" placeholder="Food, beer, petrol..." required>
+      </label>
+
+      <label>
+        Date
+        <input id="dateInput" type="date" required>
+      </label>
+
+      <div>
+        <p class="field-title">Who was included in this split?</p>
+        <div id="participantInputs" class="check-grid"></div>
+      </div>
+
+      <p id="expenseError" class="error-text"></p>
+      <button class="primary-btn full" type="submit">Save transaction</button>
+    </form>
+  </dialog>
+
+  <dialog id="detailsDialog" class="modal">
+    <div class="modal-card details-card">
+      <button class="close-btn" type="button" data-close-details>&times;</button>
+      <p class="eyebrow" id="detailsEyebrow">Details</p>
+      <h2 id="detailsTitle">Transactions</h2>
+      <div id="detailsList" class="details-list"></div>
+    </div>
+  </dialog>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
